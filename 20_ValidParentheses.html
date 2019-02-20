@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isValid = function(s) {
+            var a = s.split("");  // 现将字符串转化为数组
+            var stack = []; // 假装是个栈来保存每个输入进来的括号
+            var top = 0; // 栈顶位置
+            if(a.length % 2 != 0) return false; // 如果括号个数为奇数个必定匹配不成功
+            for(var i = 0;i < a.length;i++){  // 遍历保存括号的数组
+                if(a[i] == '(' || a[i] == '[' || a[i] == '{'){  // 如果是左括号则入栈
+                    stack.push(a[i]);
+                    top++;
+                }else{   // 如果是右括号，则检查栈顶的括号是否与该右括号对应，是则出栈，否则匹配失败
+                    switch(a[i]){
+                        case ')':
+                            if(stack[top-1] == '(') {
+                                stack.pop();
+                                top--;
+                                break;
+                            }else{
+                                return false;
+                            }
+                        case ']':
+                            if(stack[top-1] == '[') {
+                                stack.pop();
+                                top--;
+                                break;
+                            }else{
+                                return false;
+                            }
+                        case '}':
+                            if(stack[top-1] == '{') {
+                                stack.pop();
+                                top--;
+                                break;
+                            }else{
+                                return false;
+                            }
+                    }
+                }
+            }
+            return top==0?true:false;  // 栈为空则返回true，否则返回false
+        };  
+        var input = "(("
+        console.log(isValid(input));
+    </script>
+</body>
+</html>

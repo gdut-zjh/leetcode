@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var trailingZeroes = function(n) {
+            var sum = 0;
+            while(n >= 5){
+                sum = sum + Math.floor(n/5);
+                n = Math.floor(n/5);
+            }
+            return sum;
+            // 只要出现一次5和2相乘尾数必然有一个0，因此只需计算所有因数中5和2的个数的最小值，由于因子2必然比5多，故只需要计算5的个数
+        };
+        console.log(trailingZeroes(20));
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var longestCommonPrefix = function(strs) {
+            if(strs.length == 0) return "";    // 如果strs数组没有字符串，返回""
+            if(strs.length == 1) return strs[0];  // 如果strs数组只有一个字符串，返回该字符串
+            
+            var minLen = strs[0].length;   // 数组中所有字符串的最短长度
+            var result = '';  // 返回的结果
+            
+            
+            for(var i = 0; i < strs.length; i++){   // 求出数组中所有字符串的最短长度
+                if(strs[i].length < minLen)
+                    minLen = strs[i].length;
+            }
+            
+            if(minLen == 0) return '';   // 如果最短长度为0，返回""，例如["",""];
+            
+            for(var j = 0; j < minLen; j++){   // 按列循环
+                var a = strs[0][j];
+                for(var i = 0; i < strs.length; i++){  // 按行循环
+                    if(strs[i][j] == a) continue;  // 如果后面每行的第j个字符和0行的第一个字符相同，则跳过本次循环
+                    else return result;  // 否则（字符不相等）结束本次循环
+                }
+                result += strs[0][j];  // 拼接结果
+            }
+            return result;
+        };
+
+        console.log(longestCommonPrefix(["c", "c"]));
+        console.log(longestCommonPrefix(["flower","flow","flight"]));
+    </script>
+</body>
+</html>

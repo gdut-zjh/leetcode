@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+        // 你可以假设数组中无重复元素。
+        // 示例 1:
+        // 输入: [1,3,5,6], 5
+        // 输出: 2
+
+        var searchInsert = function(nums, target) {
+            var flag = 0;  // 判断target是否在nums中
+            var max = nums[nums.length - 1];  // 初始数组的最大值
+            var min = nums[0];  // 初始数组的最小值
+            for(var i = 0; i < nums.length; i++){  // 查看target是否在nums中，在则返回位置，不在则置flag==1
+                if(nums[i] == target){
+                    return i;
+                }else{
+                    flag = 1;
+                }
+            }
+            if(flag == 1){  // 如果target不在数组中
+                for(var i = 0; i < nums.length; i++){  // 遍历数组
+                    if(target > nums[i] && target <= nums[i+1]){  // 如果在nums中有符合target的位置，则返回
+                        return i+1;
+                    }
+                    if(target > max){  // 如果target > max ，返回数组长度
+                        return nums.length;
+                    }
+                    if(target == 0 || target < min){  // 如果target < min，返回0
+                        return 0;
+                    }
+                }
+            }
+        };
+        var nums = [1,3,5,6];
+        var target = 2;
+        console.log(searchInsert(nums, target));
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+
+    // 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+    // 示例 1:
+
+    // 给定数组 nums = [1,1,2], 
+
+    // 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 
+
+    // 你不需要考虑数组中超出新长度后面的元素。
+
+    var removeDuplicates = function(nums){
+        var len = nums.length;  // 输入数组的长度
+        var flag = 0;  // 记录当前位置
+        for(var i = 0; i < len; i++){  // 遍历数组
+            temp = nums[i];  // 保存当前位置的值
+            flag = i+1;  // 将当前位置+1
+            for(var j = flag; j < len; j++){  // 从当前位置开始遍历
+                if(nums[flag] == temp){   // 如果当前位置的值等于temp，则删去该元素
+                    nums.splice(flag,1);
+                }
+            }
+        }
+        return nums;  // 返回删除后的数组
+    }
+    var nums = [1,1,2];
+    console.log(removeDuplicates(nums));
+    </script>
+</body>
+</html>

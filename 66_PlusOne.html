@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+        // 最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。
+        // 你可以假设除了整数 0 之外，这个整数不会以零开头。
+        // 示例 1:
+        // 输入: [1,2,3]
+        // 输出: [1,2,4]
+        var plusOne = function(digits) {   
+            var len = digits.length;
+            var result = 0;
+            var i = 0;
+            while(len!=0){
+                result = result + digits[i]*Math.pow(10,--len);
+                i++;
+            }
+            
+            var a = String(result+1).split('');
+            for(var j = 0; j < a.length; j++){
+                parseInt(a[i]);
+            }
+            return a;
+        };
+        var digits = [9];
+        console.log(plusOne(digits));
+    </script>
+</body>
+</html>

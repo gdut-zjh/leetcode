@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9-回文数</title>
+</head>
+<body>
+    <span>输入数字：</span>
+    <input type="number" name="" id="num">
+    <input type="button" value="点击判断是否是回文数" onclick="check()">
+    <p id="demo"></p>
+
+
+    <script>
+        function isPalindrome(x){
+            if(x<0 || (x%10==0 && x!=0)) return false;
+            var result = 0;
+            y = x;
+            while(x>result){
+                result = result*10 + y%10;
+                y = Math.floor(y/10);
+            }
+            console.log(result);
+            return x == result;
+        }
+        function check(){
+            var a = document.getElementById("num").value;
+            if(isPalindrome(a)){
+                document.getElementById("demo").innerHTML = a + "是回文数";
+            }else{
+                document.getElementById("demo").innerHTML = a + "不是回文数";
+            }
+        }
+    </script>
+</body>
+</html>
